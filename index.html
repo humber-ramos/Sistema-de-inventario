@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>BOTBLAZE</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1 class="display-5 mb-5"><strong>BOTBLAZE - LISTA DE PRODUCTOS</strong></h1>
+        </div>
+        <div class="main row justify-content-center">
+            <form action="" id="product-form" class="row justify-content-center mb-4" autocomplete="off">
+                <div class="col-10 col-md-8">
+                    <label for="Name">Nombre</label>
+                    <input class="form-control" id="Name" type="text" placeholder="Escriba el nombre del producto">
+                </div>
+                <div class="col-10 col-md-8">
+                    <label for="Description">Descripción</label>
+                    <input class="form-control" id="Description" type="text" placeholder="Escriba una descripción del producto">
+                </div>
+                <div class="col-10 col-md-8">
+                    <label for="Unit-price">Precio Unitario</label>
+                    <input class="form-control" id="Unit-price" type="text" placeholder="Escriba el precio unitario del producto" onkeypress="validate(event)">
+                </div>
+                <div class="col-10 col-md-8">
+                    <label for="Initial-qty">Cantidad Inicial</label>
+                    <input class="form-control" id="Initial-qty" type="text" placeholder="Escriba la cantidad inicial en inventario" onkeypress="validate(event)">
+                </div>
+                <div class="col-10 col-md-8">
+                    <input class="btn btn-success add-btn" type="submit" value="Agregar">
+                </div>
+            </form>       
+
+            <div class="col-12 col-md-10 mt-5">         
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th id="filter">Precio Unitario 
+                                <button
+                                  class="btn btn-light rounded-3 wrapper"
+                                  type="button"
+                                  id="dropdownMenuButton1"
+                                  data-bs-toggle="dropdown"
+                                  data-hover="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="bi bi-filter me-1"></i>
+                                  &#9776
+                                </button>
+                                <ul
+                                  class="dropdown-menu dropdown-menu-end"
+                                  aria-labelledby="dropdownMenuButton1"
+                                >
+                                <li>
+                                  <a class="dropdown-item" onclick="showAllPrice()">Mostrar todo</a>
+                                </li>
+                                  <li>
+                                    <a class="dropdown-item" onclick="Less_than_10()">Menor a 10</a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" onclick="From_10_100()">De 10 a 100</a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" onclick="Over_100()">Más de 100</a>
+                                  </li>
+                                 </ul>
+                              </th>
+                            <th>Cantidad Disponible
+                                <button
+                                  class="btn btn-light rounded-3 wrapper"
+                                  type="button"
+                                  id="dropdownMenuButton1"
+                                  data-bs-toggle="dropdown"
+                                  data-hover="dropdown"
+                                  aria-expanded="false"
+                                >
+                                  <i class="bi bi-filter me-1"></i>
+                                  &#9776
+                                </button>
+                                <ul
+                                  class="dropdown-menu dropdown-menu-end"
+                                  aria-labelledby="dropdownMenuButton1"
+                                >
+                                <li>
+                                  <a class="dropdown-item" onclick="showAllStock()">Mostrar todo</a>
+                                </li>
+                                  <li>
+                                    <a class="dropdown-item" onclick="zero()">Agotado</a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" onclick="low()">1 - 20</a>
+                                  </li>
+                                  <li>
+                                    <a class="dropdown-item" onclick="high()">Más de 20</a>
+                                  </li>
+                                </ul>
+                            </th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-list">
+                        <tr>
+                            <td>Laptop</td>
+                            <td>HP Pavilion Plus 14</td>
+                            <td>1000</td>
+                            <td>5 <input type="number" class="number" id="number" min="0" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"></td>
+                            <td>
+                                <a href="#" class="btn btn-success btn-sm edit">Editar</a>   
+                                <a href="#" class="btn btn-danger btn-sm delete">Eliminar</a>   
+                                <a href="#" class="btn btn-info btn-sm update">Actualizar Inventario</a>  
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
