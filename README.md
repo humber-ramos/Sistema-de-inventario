@@ -1,4 +1,5 @@
 Nombre: José Humberto Ramos Guardado
+
 Tecnologías utilizadas: HTML, CSS, Javascript y Bootstrap
 
 INSTRUCCIONES:
